@@ -110,7 +110,7 @@ def cmd_rss_list(update, context):
         update.effective_message.reply_text("No subscriptions.")
     else:
         for title, url_list in rss_dict.items():
-            listfeed +=f"Title: {title}\nFeed: {url_list[0]}\n\n"
+            listfeed +=f"Title: <code>{title}</code>\nFeed: <b>{url_list[0]}</b>\n\n"
         update.effective_message.reply_text(f"<b>Your subscriptions:</b>\n\n" + listfeed, parse_mode='HTMl')
 
 def cmd_get(update, context):
@@ -132,7 +132,7 @@ def cmd_get(update, context):
                 msg = update.effective_message.reply_text(f"Getting the last <b>{count}</b> item(s), please wait!", parse_mode='HTMl')
                 for num_feeds in range(feed_num):
                     rss_d = feedparser.parse(feedurl[0])
-                    feedinfo +=f"<b>{rss_d.entries[num_feeds]['title']}</b>\n{rss_d.entries[num_feeds]['link']}\n\n"
+                    feedinfo +=f"<code>{rss_d.entries[num_feeds]['title']}</code>\n{rss_d.entries[num_feeds]['link']}\n\n"
                 msg.edit_text(feedinfo, parse_mode='HTMl')    
         else:
             update.effective_message.reply_text("No such feed found.")
@@ -151,7 +151,7 @@ def cmd_rss_sub(update, context):
             # try if the url is a valid RSS feed
             rss_d = feedparser.parse(context.args[1])
             rss_d.entries[0]['title']
-            title_rss =  f"<b>{rss_d.feed.title}</b> latest record:\n<b>{rss_d.entries[0]['title']}</b>\n{rss_d.entries[0]['link']}"    
+            title_rss =  f"<code>{rss_d.feed.title}</code> latest record:\n<code>{rss_d.entries[0]['title']}</code>\n<b>{rss_d.entries[0]['link']}</b>"    
             postgres_write(context.args[0], context.args[1], str(rss_d.entries[0]['link']), str(rss_d.entries[0]['title']))
             addfeed = f"<b>Subscribed!</b>\nTitle: {context.args[0]}\nFeed: {context.args[1]}"
             update.effective_message.reply_text(addfeed, parse_mode='HTMl')
