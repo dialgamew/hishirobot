@@ -6,7 +6,7 @@ from psycopg2 import Error
 
 from telegram.ext import  CommandHandler
 from bot import LOGGER, dispatcher, updater, CHAT_ID, DELAY, DB_URI, INIT_FEEDS, CUSTOM_MESSAGES
-from .helper.ext_utils.bot_utils import get_readable_file_size, get_readable_time
+from bot.helper.ext_utils.bot_utils import get_readable_file_size, get_readable_time
 from bot.helper.telegram_helper.bot_commands import BotCommands
 from bot.helper.telegram_helper.filters import CustomFilters
 
