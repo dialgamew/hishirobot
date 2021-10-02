@@ -46,18 +46,18 @@ def stats(update, context):
 
 def start(update, context):
     buttons = button_build.ButtonMaker()
-    buttons.buildbutton("Repo", "https://github.com/hyPnOtICDo0g/hishirobot")
-    buttons.buildbutton("Read ReLIFE", "https://myanimelist.net/manga/78523/ReLIFE")
+    buttons.buildbutton("SOURCE", "https://t.me/fateverse")
+    buttons.buildbutton("Love FATE", "https://t.me/fateverse")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         start_string = f'''
-This bot can mirror all your links to Google Drive!
+This bot can mirror all your links to Google Drive!(I hope)
 Type /{BotCommands.HelpCommand} to get a list of available commands
 '''
         sendMarkup(start_string, context.bot, update, reply_markup)
     else:
         sendMarkup(
-            'Oops! not an Authorized user.',
+            'Oops! not an Authorized user. Enjoy',
             context.bot,
             update,
             reply_markup,
@@ -65,7 +65,7 @@ Type /{BotCommands.HelpCommand} to get a list of available commands
 
 
 def restart(update, context):
-    restart_message = sendMessage("Restarting, Please wait!", context.bot, update)
+    restart_message = sendMessage("Restarting, Please wait! And Watch FATE", context.bot, update)
     # Save restart message object in order to reply to it after restarting
     with open(".restartmsg", "w") as f:
         f.truncate(0)
@@ -155,9 +155,9 @@ help_string_telegraph = f'''<br>
 <b>/{BotCommands.StatsCommand}</b>: Show Stats of the machine the bot is hosted on
 '''
 help = Telegraph(access_token=telegraph_token).create_page(
-        title='Hishirobot Help',
-        author_name='Hishirobot',
-        author_url='https://github.com/hyPnOtICDo0g/hishirobot',
+        title='Formalin Help',
+        author_name='Formalinbot',
+        author_url='https://t.me/fateverse',
         html_content=help_string_telegraph,
     )["path"]
 
@@ -223,11 +223,11 @@ def main():
     if os.path.isfile(".restartmsg"):
         with open(".restartmsg") as f:
             chat_id, msg_id = map(int, f)
-        bot.edit_message_text("Restarted successfully!", chat_id, msg_id)
+        bot.edit_message_text("Restarted successfully! \n\n<b>#DynoRestart</b>", chat_id, msg_id)
         os.remove(".restartmsg")
     elif OWNER_ID:
         try:
-            text = "<b>Bot Restarted!</b>"
+            text = "<b>Bot Restarted!</b> \n\n <b>#DynoRestart</b>"
             bot.sendMessage(chat_id=OWNER_ID, text=text, parse_mode=ParseMode.HTML)
             if AUTHORIZED_CHATS:
                 for i in AUTHORIZED_CHATS:
