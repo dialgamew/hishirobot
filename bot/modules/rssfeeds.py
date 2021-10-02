@@ -189,6 +189,7 @@ def init_feeds():
         LOGGER.info('Initiated feeds.')
 
 def rss_monitor(context):
+    currentTime = get_readable_time(time.time() - botStartTime)
     feed_info = ""
     for name, url_list in rss_dict.items():
         try:
@@ -204,7 +205,7 @@ def rss_monitor(context):
                     feed_urls.insert(0, rss_d.entries[feed_count]['link'])
                     feed_count += 1
                 for x in range(len(feed_urls)):
-                    feed_info = f"{CUSTOM_MESSAGES}\n<b>{feed_titles[x]}</b>\n{feed_urls[x]}"
+                    feed_info = f"{CUSTOM_MESSAGES} <b>{feed_urls[x]}</b> \n\n\<code>{feed_titles[x]}</code> \n\n\n<b>#Bot_Uptime:</b> <code>{currentTime}</code>\n"
                     context.bot.send_message(CHAT_ID, feed_info, parse_mode='HTMl')
                 # overwrite the existing item with the latest item
                 postgres_update(str(rss_d.entries[0]['link']), name, str(rss_d.entries[0]['title']))
