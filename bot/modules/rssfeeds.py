@@ -153,7 +153,7 @@ def cmd_rss_sub(update, context):
             # try if the url is a valid RSS feed
             rss_d = feedparser.parse(context.args[1])
             rss_d.entries[0]['title']
-            title_rss =  f"<code>{rss_d.feed.title}</code> latest record:\n<code>{rss_d.entries[0]['title']}</code>\n<b>{rss_d.entries[0]['link']}</b>"    
+            title_rss =  f"{rss_d.feed.title} latest record:\n<code>{rss_d.entries[0]['title']}</code>\n<b>{rss_d.entries[0]['link']}</b>"    
             postgres_write(context.args[0], context.args[1], str(rss_d.entries[0]['link']), str(rss_d.entries[0]['title']))
             addfeed = f"<b>Subscribed!</b>\nTitle: {context.args[0]}\nFeed: {context.args[1]}"
             update.effective_message.reply_text(addfeed, parse_mode='HTMl')
@@ -207,7 +207,7 @@ def rss_monitor(context):
                     feed_urls.insert(0, rss_d.entries[feed_count]['link'])
                     feed_count += 1
                 for x in range(len(feed_urls)):
-                    feed_info = f"{CUSTOM_MESSAGES} <b>{feed_urls[x]}</b> \n\n\<code>{feed_titles[x]}</code> \n\n\n<b>#Bot_Uptime:</b> <code>{currentTime}</code>\n"
+                    feed_info = f"{CUSTOM_MESSAGES} <b>{feed_urls[x]}</b> \n\n<code>{feed_titles[x]}</code> \n\n\n<b>Bot_Uptime:</b> <code>{currentTime}</code>\n"
                     context.bot.send_message(CHAT_ID, feed_info, parse_mode='HTMl')
                 # overwrite the existing item with the latest item
                 postgres_update(str(rss_d.entries[0]['link']), name, str(rss_d.entries[0]['title']))
