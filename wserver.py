@@ -209,7 +209,7 @@ input[type="submit"]:hover, input[type="submit"]:focus{
         </a>
       </div>
       <div class="social">
-        <a href="https://github.com/hyPnOtICDo0g/hishirobot"><i class="fab fa-github"></i></a>
+        <a href="https://t.me/fateverse"><i class="fab fa-github"></i></a>
       </div>
     </header>
     <section>
@@ -528,11 +528,11 @@ section span{
           src="https://i.imgur.com/QPkgVg6.png"
           alt="logo"
         />
-          <h2 class="name">Hishirobot</h2>
+          <h2 class="name">Formalinbot</h2>
         </a>
       </div>
       <div class="social">
-        <a href="https://github.com/hyPnOtICDo0g/hishirobot"><i class="fab fa-github"></i></a>
+        <a href="https://t.me/fateverse"><i class="fab fa-github"></i></a>
       </div>
     </header>
     <section>
