@@ -5,7 +5,7 @@ from pyrogram import filters
 from bot import app, OWNER_ID, bot
 from bot.helper import check_heroku
 
-@app.on_message(filters.command(['reboot39', f'reboot39@{bot.username}']) & filters.user(OWNER_ID))
+@app.on_message(filters.command(['reboot40', f'reboot40@{bot.username}']) & filters.user(OWNER_ID))
 @check_heroku
 async def gib_restart(client, message, hap):
     msg_ = await message.reply_text("[HEROKU-Dyno] - Restarting")
