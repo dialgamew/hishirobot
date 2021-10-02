@@ -19,3 +19,5 @@ Projects used in the making:
 * [SearchX-bot](https://github.com/SVR666/SearchX-bot)
 
 BTW, here's a cute picture of [Hishiro](https://i.imgur.com/QPkgVg6.png).
+
+1 YEAR = <code>31557600</code> SECONDS
